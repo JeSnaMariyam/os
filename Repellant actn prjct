@@ -1,0 +1,44 @@
+const int relay1 = 25;
+const int relay2 = 26;
+const int relay3 = 27;
+const int relay4 = 13;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(relay1, OUTPUT);
+  pinMode(relay2, OUTPUT);
+  pinMode(relay3, OUTPUT);
+  pinMode(relay4, OUTPUT);
+  digitalWrite(relay1, HIGH);
+  digitalWrite(relay2, HIGH);
+  digitalWrite(relay3, HIGH);
+  digitalWrite(relay4, HIGH);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char inChar = Serial.read();
+    switch (inChar) {
+      case 'A':
+        digitalWrite(relay1, LOW);
+        delay(5000);
+        digitalWrite(relay1, HIGH);
+        break;
+      case 'B':
+        digitalWrite(relay2, LOW);
+        delay(5000);
+        digitalWrite(relay2, HIGH);
+        break;
+      case 'C':
+        digitalWrite(relay3, HIGH);
+        delay(5000);
+        digitalWrite(relay3, LOW);
+        break;
+      case 'D':
+        digitalWrite(relay4, LOW);
+        delay(5000);
+        digitalWrite(relay4, HIGH);
+        break;
+    }
+  }
+}
